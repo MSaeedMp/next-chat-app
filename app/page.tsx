@@ -59,7 +59,7 @@ const HomePage = () => {
     }
 
     window.addEventListener("resize", updateHeight);
-    window.visualViewport?.addEventListener("resize", updateHeight); // Listen for viewport height changes
+    window.visualViewport?.addEventListener("resize", updateHeight);
 
     return () => {
       resizeObserver.disconnect();
@@ -158,7 +158,7 @@ const HomePage = () => {
       >
         <ChatContainer className="lg:!px-0">
           {!isChatStarted && (
-            <h1 className="md:text-3xl text-2xl font-extrabold font-inter text-center md:mb-4 mb-2">
+            <h1 className="lg:text-3xl sm:text-2xl text-xl lg:font-extrabold font-bold font-inter text-center md:mb-4 mb-2">
               What can I help you with?
             </h1>
           )}
