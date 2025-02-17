@@ -12,7 +12,8 @@ type TextAreaInputProps = {
   placeholder?: string;
   minRows?: number;
   maxRows?: number;
-  disabled?: boolean
+  disabled?: boolean;
+  isStreaming?: boolean;
 };
 
 const TextAreaInput = ({
@@ -21,9 +22,10 @@ const TextAreaInput = ({
   defaultValue,
   value,
   onChange,
+  isStreaming,
   minRows = 4,
   maxRows = 10,
-  disabled
+  disabled,
 }: TextAreaInputProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -50,7 +52,7 @@ const TextAreaInput = ({
       textAreaRef.current.focus();
     }
     adjustHeight();
-  }, [value]);
+  }, [isStreaming]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {

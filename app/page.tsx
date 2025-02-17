@@ -163,10 +163,11 @@ const HomePage = () => {
                 name="message"
                 placeholder="Message NextChat..."
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
                 minRows={2}
                 maxRows={10}
                 disabled={isStreaming || isLoading}
+                onChange={(e) => setMessage(e.target.value)}
+                isStreaming={isStreaming}
               />
               <Button
                 variant="default"
