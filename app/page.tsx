@@ -42,8 +42,10 @@ const HomePage = () => {
 
     const updateHeight = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
-      const viewportHeight = window.innerHeight;
+      const viewportHeight =
+        window.visualViewport?.height || window.innerHeight;
       const availableHeight = viewportHeight - chatBoxHeight - 113;
+
       if (chatBoxRef.current) {
         chatBoxRef.current.style.height = `${availableHeight}px`;
       }
@@ -57,10 +59,12 @@ const HomePage = () => {
     }
 
     window.addEventListener("resize", updateHeight);
+    window.visualViewport?.addEventListener("resize", updateHeight); // Listen for viewport height changes
 
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeight);
+      window.visualViewport?.removeEventListener("resize", updateHeight);
     };
   }, [isChatStarted, messageBoxRef, chatBoxRef]);
 
