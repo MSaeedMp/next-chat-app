@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fira_Code, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
@@ -47,6 +47,14 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 };
+export const viewport: Viewport = {
+  initialScale: 1,
+  minimumScale: 1,
+  width: "device-width",
+  height: "device-height",
+  viewportFit: "cover", 
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${firaCode.variable} antialiased text-foreground`}
+        className={`${inter.variable} ${firaCode.variable} antialiased text-foreground `}
       >
         <Providers>
           <Header />
