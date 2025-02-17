@@ -57,7 +57,7 @@ const HomePage = () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeight);
     };
-  }, []);
+  }, [isChatStarted]);
 
   useEffect(() => {
     if (messageStartRef.current) {
