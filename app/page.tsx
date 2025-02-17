@@ -44,12 +44,17 @@ const HomePage = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
       const viewportHeight = window.innerHeight;
       const availableHeight = viewportHeight - chatBoxHeight - 113;
-      chatBoxRef.current!.style.height = `${availableHeight}px`;
+      if (chatBoxRef.current) {
+        chatBoxRef.current.style.height = `${availableHeight}px`;
+      }
     };
 
     updateHeight();
-    const resizeObserver = new ResizeObserver(updateHeight);
-    resizeObserver.observe(messageBoxRef.current);
+
+    const resizeObserver = new ResizeObserver(() => updateHeight());
+    if (messageBoxRef.current) {
+      resizeObserver.observe(messageBoxRef.current);
+    }
 
     window.addEventListener("resize", updateHeight);
 
@@ -57,7 +62,7 @@ const HomePage = () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeight);
     };
-  }, [isChatStarted]);
+  }, [isChatStarted, messageBoxRef, chatBoxRef]);
 
   useEffect(() => {
     if (messageStartRef.current) {
@@ -155,7 +160,7 @@ const HomePage = () => {
           )}
           <form
             onSubmit={handleSendMessage}
-            className="lg:rounded-3xl md:rounded-2xl rounded-xl w-full bg-accent/95 flex flex-col"
+            className="lg:rounded-3xl md:rounded-2xl rounded-xl w-full bg-accent flex flex-col"
             ref={messageBoxRef}
           >
             <TextAreaInput
