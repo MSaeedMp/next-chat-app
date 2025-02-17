@@ -23,7 +23,7 @@ const HomePage = () => {
   const messageStartRef = useRef<HTMLDivElement>(null);
   const isChatStarted = chatHistory.length > 0;
   const { model } = useModelContext();
-
+  
   useEffect(() => {
     const storedHistory = localStorage.getItem("chatHistory");
     if (storedHistory) {
@@ -42,8 +42,7 @@ const HomePage = () => {
 
     const updateHeight = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
-      const viewportHeight =
-        window.visualViewport?.height || window.innerHeight;
+      const viewportHeight = window.visualViewport?.height || window.innerHeight;
       const availableHeight = viewportHeight - chatBoxHeight - 113;
       chatBoxRef.current!.style.height = `${availableHeight}px`;
     };
