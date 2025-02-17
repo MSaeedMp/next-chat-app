@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Fira_Code, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
@@ -46,13 +46,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-};
-export const viewport: Viewport = {
-  initialScale: 1,
-  minimumScale: 1,
-  width: "device-width",
-  height: "device-height",
-  viewportFit: "cover", 
 };
 
 export default function RootLayout({
