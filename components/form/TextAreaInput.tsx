@@ -64,6 +64,13 @@ const TextAreaInput = ({
     }
   };
 
+  const onTouchMove = (e: Event) => {
+    e.preventDefault();
+    if (textAreaRef.current) {
+      textAreaRef.current.blur();
+    }
+  };
+
   return (
     <Textarea
       id={name}
@@ -78,6 +85,8 @@ const TextAreaInput = ({
       onKeyDown={handleKeyDown}
       onInput={adjustHeight}
       disabled={disabled}
+      onFocus={() => document.addEventListener("touchmove", onTouchMove)}
+      onBlur={() => document.removeEventListener("touchmove", onTouchMove)}
     />
   );
 };
