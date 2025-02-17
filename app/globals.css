@@ -27,6 +27,7 @@ body {
   font-family: var(--font-sans-serif);
   font-weight: 400;
   /* height: 100dvh; */
+  overflow-y:hidden
 }
 * {
   scroll-behavior: smooth;

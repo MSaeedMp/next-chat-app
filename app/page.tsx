@@ -25,15 +25,6 @@ const HomePage = () => {
   const { model } = useModelContext();
 
   useEffect(() => {
-    const handleResize = () => {
-      document.body.style.height = `${window.innerHeight}px`;
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
     const storedHistory = localStorage.getItem("chatHistory");
     if (storedHistory) {
       setChatHistory(JSON.parse(storedHistory));
