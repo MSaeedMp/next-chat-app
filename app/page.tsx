@@ -6,6 +6,7 @@ import Spinner from "@/components/global/Spinner";
 import { Button } from "@/components/ui/button";
 import { useChatContext } from "@/hook/useChatContext";
 import { useModelContext } from "@/hook/useModelContext";
+import usePreventScrollWhenKeyboardOpen from "@/hook/usePreventScrollWhenKeyboardOpen";
 import { cn } from "@/lib/utils";
 import { getGroqChatCompletion } from "@/utils/actions";
 import { useEffect, useRef, useState } from "react";
@@ -23,6 +24,8 @@ const HomePage = () => {
   const messageStartRef = useRef<HTMLDivElement>(null);
   const isChatStarted = chatHistory.length > 0;
   const { model } = useModelContext();
+
+  usePreventScrollWhenKeyboardOpen();
 
   useEffect(() => {
     const storedHistory = localStorage.getItem("chatHistory");
