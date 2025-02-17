@@ -43,7 +43,7 @@ const HomePage = () => {
     const updateHeight = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
       const viewportHeight = window.innerHeight;
-      const availableHeight = viewportHeight - chatBoxHeight - 20;
+      const availableHeight = viewportHeight - chatBoxHeight - 113;
       chatBoxRef.current!.style.height = `${availableHeight}px`;
     };
 
@@ -57,7 +57,7 @@ const HomePage = () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeight);
     };
-  }, [isChatStarted]);
+  }, []);
 
   useEffect(() => {
     if (messageStartRef.current) {
