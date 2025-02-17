@@ -37,27 +37,27 @@ const HomePage = () => {
     }
   }, [chatHistory]);
 
-  // useEffect(() => {
-  //   if (!messageBoxRef.current || !chatBoxRef.current) return;
+  useEffect(() => {
+    if (!messageBoxRef.current || !chatBoxRef.current) return;
 
-  //   const updateHeight = () => {
-  //     const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
-  //     const viewportHeight = window.innerHeight;
-  //     const availableHeight = viewportHeight - chatBoxHeight - 113;
-  //     chatBoxRef.current!.style.height = `${availableHeight}px`;
-  //   };
+    const updateHeight = () => {
+      const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
+      const viewportHeight = window.innerHeight;
+      const availableHeight = viewportHeight - chatBoxHeight - 20;
+      chatBoxRef.current!.style.height = `${availableHeight}px`;
+    };
 
-  //   updateHeight();
-  //   const resizeObserver = new ResizeObserver(updateHeight);
-  //   resizeObserver.observe(messageBoxRef.current);
+    updateHeight();
+    const resizeObserver = new ResizeObserver(updateHeight);
+    resizeObserver.observe(messageBoxRef.current);
 
-  //   window.addEventListener("resize", updateHeight);
+    window.addEventListener("resize", updateHeight);
 
-  //   return () => {
-  //     resizeObserver.disconnect();
-  //     window.removeEventListener("resize", updateHeight);
-  //   };
-  // }, [isChatStarted]);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [isChatStarted]);
 
   useEffect(() => {
     if (messageStartRef.current) {
