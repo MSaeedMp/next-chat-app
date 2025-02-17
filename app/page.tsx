@@ -42,8 +42,7 @@ const HomePage = () => {
 
     const updateHeight = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
-      const viewportHeight =
-        window.visualViewport?.height || window.innerHeight;
+      const viewportHeight = window.innerHeight;
       const availableHeight = viewportHeight - chatBoxHeight - 113;
       chatBoxRef.current!.style.height = `${availableHeight}px`;
     };
