@@ -164,7 +164,7 @@ const HomePage = () => {
           )}
           <form
             onSubmit={handleSendMessage}
-            className="lg:rounded-3xl md:rounded-2xl rounded-xl w-full bg-accent flex flex-col"
+            className="lg:rounded-3xl rounded-2xl w-full bg-accent flex flex-col"
             ref={messageBoxRef}
           >
             <TextAreaInput
