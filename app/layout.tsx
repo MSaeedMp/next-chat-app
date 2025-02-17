@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${firaCode.variable} antialiased text-foreground `}
+        className={`${inter.variable} ${firaCode.variable} antialiased text-foreground`}
       >
         <Providers>
           <Header />
