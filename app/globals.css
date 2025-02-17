@@ -23,20 +23,24 @@
   font-family: var(--font-fira-code);
 }
 
-body {
-  font-family: var(--font-sans-serif);
-  font-weight: 400;
-  /* height: 100dvh; */
-  overflow-y:hidden
-}
 * {
   scroll-behavior: smooth;
 }
+html,
+body {
+  overflow: hidden;
+  height: 100dvh;
+  margin: 0;
+}
+body {
+  font-family: var(--font-sans-serif);
+  font-weight: 400;
+}
 
-html body[data-scroll-locked] {
+/* html body[data-scroll-locked] {
   overflow: visible !important;
   margin-right: 0 !important;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 27px;
