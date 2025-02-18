@@ -53,7 +53,7 @@ const HomePage = () => {
 
     updateHeight();
 
-    const resizeObserver = new ResizeObserver(() => updateHeight());
+    const resizeObserver = new ResizeObserver(updateHeight);
     if (messageBoxRef.current) {
       resizeObserver.observe(messageBoxRef.current);
     }
@@ -66,7 +66,7 @@ const HomePage = () => {
       window.removeEventListener("resize", updateHeight);
       window.visualViewport?.removeEventListener("resize", updateHeight);
     };
-  }, [isChatStarted, messageBoxRef, chatBoxRef]);
+  }, [isChatStarted]);
 
   useEffect(() => {
     if (messageStartRef.current) {
