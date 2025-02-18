@@ -23,7 +23,10 @@ const HomePage = () => {
   const messageStartRef = useRef<HTMLDivElement>(null);
   const isChatStarted = chatHistory.length > 0;
   const { model } = useModelContext();
-
+  const [initialViewportHeight, setInitialViewportHeight] = useState(
+    window.innerHeight
+  );
+  
   useEffect(() => {
     const storedHistory = localStorage.getItem("chatHistory");
     if (storedHistory) {
@@ -42,9 +45,7 @@ const HomePage = () => {
 
     const updateHeight = () => {
       const chatBoxHeight = messageBoxRef.current?.offsetHeight || 0;
-      const viewportHeight =
-        window.visualViewport?.height || window.innerHeight;
-      const availableHeight = viewportHeight - chatBoxHeight - 113;
+      const availableHeight = initialViewportHeight - chatBoxHeight - 113;
 
       if (chatBoxRef.current) {
         chatBoxRef.current.style.height = `${availableHeight}px`;
@@ -59,14 +60,12 @@ const HomePage = () => {
     }
 
     window.addEventListener("resize", updateHeight);
-    window.visualViewport?.addEventListener("resize", updateHeight);
 
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeight);
-      window.visualViewport?.removeEventListener("resize", updateHeight);
     };
-  }, [isChatStarted]);
+  }, [isChatStarted, initialViewportHeight]);
 
   useEffect(() => {
     if (messageStartRef.current) {
