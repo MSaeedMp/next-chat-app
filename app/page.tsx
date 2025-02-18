@@ -23,10 +23,12 @@ const HomePage = () => {
   const messageStartRef = useRef<HTMLDivElement>(null);
   const isChatStarted = chatHistory.length > 0;
   const { model } = useModelContext();
-  const [initialViewportHeight, setInitialViewportHeight] = useState(
-    window.innerHeight
-  );
-  
+  const [initialViewportHeight, setInitialViewportHeight] = useState(0);
+
+  useEffect(() => {
+    setInitialViewportHeight(window.innerHeight);
+  }, []);
+
   useEffect(() => {
     const storedHistory = localStorage.getItem("chatHistory");
     if (storedHistory) {
