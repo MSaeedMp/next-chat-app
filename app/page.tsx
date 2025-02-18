@@ -14,8 +14,8 @@ import { IoArrowUpOutline } from "react-icons/io5";
 const MAX_HISTORY_LENGTH = 7;
 
 const HomePage = () => {
-  const [message, setMessage] = useState<string>("");
-  const { chatHistory, setChatHistory } = useChatContext();
+  const { chatHistory, setChatHistory, message, setMessage, clearMessage } =
+    useChatContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isStreaming, setIsStreaming] = useState<boolean>(false);
   const messageBoxRef = useRef<HTMLFormElement>(null);
@@ -86,7 +86,7 @@ const HomePage = () => {
     ].slice(-MAX_HISTORY_LENGTH);
 
     setChatHistory(newChatHistory);
-    setMessage("");
+    clearMessage();
 
     try {
       setIsLoading(true);

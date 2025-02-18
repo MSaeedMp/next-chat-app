@@ -10,11 +10,12 @@ import {
 } from "@/components/ui/tooltip";
 
 const ResetChatButton = () => {
-  const { clearChatHistory } = useChatContext();
+  const { clearChatHistory, clearMessage } = useChatContext();
 
   const handleResetChat = () => {
     localStorage.removeItem("chatHistory");
     clearChatHistory();
+    clearMessage();
   };
   return (
     <Tooltip>
