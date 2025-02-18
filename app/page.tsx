@@ -66,7 +66,7 @@ const HomePage = () => {
       window.removeEventListener("resize", updateHeight);
       window.visualViewport?.removeEventListener("resize", updateHeight);
     };
-  });
+  }, [isChatStarted]);
 
   useEffect(() => {
     if (messageStartRef.current) {
