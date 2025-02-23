@@ -8,11 +8,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useRouter } from "next/navigation";
 
 const ResetChatButton = () => {
   const { clearChatHistory, clearMessage } = useChatContext();
+  const router = useRouter();
 
   const handleResetChat = () => {
+    router.replace("/");
     localStorage.removeItem("chatHistory");
     clearChatHistory();
     clearMessage();
